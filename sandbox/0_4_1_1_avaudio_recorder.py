@@ -2,6 +2,14 @@ import enum
 from objc_util import ObjCClass
 
 
+class AVAudioQuality(enum.Enum):
+  AVAudioQualityMin = 0
+  AVAudioQualityLow = 32
+  AVAudioQualityMedium = 64
+  AVAudioQualityHigh = 96
+  AVAudioQualityMax = 127
+
+
 # [Core Audio その２ AudioStreamBasicDescription | objective-audio](https://objective-audio.jp/2008/03/30/core-audio-audiostreambasicdes/)
 class AVFormatIDKey(enum.Enum):  #UInt32
   kAudioFormatLinearPCM = 1819304813
@@ -24,7 +32,13 @@ AVAudioRecorder = ObjCClass('AVAudioRecorder')
 # NSURL = ObjCClass('NSURL')
 
 
-def avaudio_recorder_record(file_name, duration):
+def avaudio_recorder_record(
+    file_name,
+    duration,
+    AVFormatIDKey=AVFormatIDKey.kAudioFormatLinearPCM,
+    AVSampleRateKey=44100.00,
+    AVNumberOfChannelsKey=2,
+    AVEncoderAudioQualityKey=AVAudioQuality.AVAudioQualityMedium):
   pass
 
 
